@@ -26,3 +26,4 @@ with open("c:/Users/carya/CMPE-131-Elevate/hw2/hw2_data.txt") as f:
 with open("c:/Users/carya/CMPE-131-Elevate/hw2/csv_out.csv", "w", newline="") as g:
     writer = csv.writer(g)
     writer.writerow([reader])   # square brackets to write one string per row
+    
