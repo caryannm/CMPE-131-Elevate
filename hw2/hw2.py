@@ -17,4 +17,12 @@
 
 import csv
 
-f = open("")
+# read filename as argument
+with open("c:/Users/carya/CMPE-131-Elevate/hw2/hw2_data.txt") as f:
+    reader = f.read()
+    #print(reader)   # print to output
+
+# write to csv 
+with open("c:/Users/carya/CMPE-131-Elevate/hw2/csv_out.csv", "w", newline="") as g:
+    writer = csv.writer(g)
+    writer.writerow([reader])   # square brackets to write one string per row
