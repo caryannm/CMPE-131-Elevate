@@ -18,7 +18,9 @@
 import csv
 import json
 
-filename = 'c:/Users/User/Desktop/CMPE131/CMPE-131-Elevate/hw2/hw2_data.txt'
+filename = "C:/Users/carya/Desktop/CMPE-131-Elevate/hw2/hw2_data.txt"
+csvPath = "C:/Users/carya/Desktop/CMPE-131-Elevate/hw2/csv_out.csv"
+jsonPath = "C:/Users/carya/Desktop/CMPE-131-Elevate/hw2/json_out.json"
 dict = []
 
 # read filename as argument
@@ -27,12 +29,12 @@ with open(filename, 'r') as f:
     readcsv = f.read().replace('\t', ',') 
 
 # write to csv 
-with open("c:/Users/User/Desktop/CMPE131/CMPE-131-Elevate/hw2/csv_out.csv", "w", newline="") as g:
+with open(csvPath, "w", newline="") as g:
     writer = csv.writer(g)
     writer.writerow([readcsv])   # square brackets to write one string per row
 
 # write to json
-with open("c:/Users/User/Desktop/CMPE131/CMPE-131-Elevate/hw2/json_out.json", "w") as json_write:
+with open(jsonPath, "w") as json_write:
     json_write.write(str(readcsv))
 
 
