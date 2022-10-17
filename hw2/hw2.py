@@ -21,7 +21,6 @@ import json
 filename = "C:/Users/carya/Desktop/CMPE-131-Elevate/hw2/hw2_data.txt"
 csvPath = "C:/Users/carya/Desktop/CMPE-131-Elevate/hw2/csv_out.csv"
 jsonPath = "C:/Users/carya/Desktop/CMPE-131-Elevate/hw2/json_out.json"
-dict = []
 
 # read filename as argument
 # read for csv
@@ -34,8 +33,46 @@ with open(csvPath, "w", newline="") as g:
     writer.writerow([readcsv])   # square brackets to write one string per row
 
 # write to json
-with open(jsonPath, "w") as json_write:
-    json_write.write(str(readcsv))
 
+# def make_json(csvPath, jsonPath):
+#    data = {}
+
+#    with open(csvPath, encoding='utf-8') as csvf:
+#        csvReader = csv.DictReader(csvf)
+
+#        for rows in csvReader:
+#            key = rows['Player']
+#            data[key] = rows
+    
+#    with open(jsonPath, 'w', encoding = )
+
+players = {}
+
+fields = ['Year', 'Player', 'Age', 'Hometown', 'Home State', 'Tm', 'G', 
+'GS', 'Cmp', 'Att', 'Yds', 'TD', 'Int', 'Att', 'Yds', 'Y/A', 'TD', 'Rec', 
+'Yds', 'Y/R', 'TD', 'FantPos', 'FantPt', 'Height (inches)', 'Weight', 'College', 
+'Conference', 'College wins', 'College losses', 'DOB', 'Draft Round', 'Draft Year', 
+'Wonderlic', '40\xa0Yard', 'Bench Press', 'Vert Leap\xa0(in)', 'Broad Jump\xa0(in)', 
+'Shuttle', '3Cone']
+
+with open(filename) as fh:
+    p = 0
+    for line in fh:
+        description = list(line.strip().split('\t'))
+        if (p > 0):
+            print(description)
+            sno = 'player'+str(p)
+            i = 0
+            playerData = {}
+            while i<len(fields):
+                playerData[fields[i]] = description[i]
+                i = i + 1
+            players[sno] = playerData
+        p = p + 1
+        
+
+out_file = open(jsonPath, "w")
+json.dump(players, out_file, indent = 4)
+out_file.close()
 
 # write to xml 
