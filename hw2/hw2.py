@@ -17,10 +17,12 @@
 
 import csv
 import json
+import xml
 
 filename = "C:/Users/carya/Desktop/CMPE-131-Elevate/hw2/hw2_data.txt"
 csvPath = "C:/Users/carya/Desktop/CMPE-131-Elevate/hw2/csv_out.csv"
 jsonPath = "C:/Users/carya/Desktop/CMPE-131-Elevate/hw2/json_out.json"
+xmlPath = "C:/Users/carya/Desktop/CMPE-131-Elevate/hw2/"
 
 # read filename as argument
 # read for csv
@@ -33,19 +35,6 @@ with open(csvPath, "w", newline="") as g:
     writer.writerow([readcsv])   # square brackets to write one string per row
 
 # write to json
-
-# def make_json(csvPath, jsonPath):
-#    data = {}
-
-#    with open(csvPath, encoding='utf-8') as csvf:
-#        csvReader = csv.DictReader(csvf)
-
-#        for rows in csvReader:
-#            key = rows['Player']
-#            data[key] = rows
-    
-#    with open(jsonPath, 'w', encoding = )
-
 players = {}
 
 fields = ['Year', 'Player', 'Age', 'Hometown', 'Home State', 'Tm', 'G', 
