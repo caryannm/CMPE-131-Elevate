@@ -16,15 +16,28 @@
                 <tbody>
                     <tr>
                         <td>
-                            "Assignment"
+                            Assignment
                         </td>
+                        <td style="display: table-cell">Grade (%) </td>
                         <td>
-                            "Grade (%)"
-                        </td>
-                        <td>
-                            "Weight"
+                            Weight
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <input type = "text" placeholder="e.g HW, Quiz"
+                            class="form-control" autofocus>
+                        </td>
+                        <td style = "display: table-cell;">
+                            <input type = "number" name="grade[]" min = "0"
+                            step="any" class="form-control">
+                        </td>
+                        <td>
+                            <input type = "number" name="weight[]" min = "0"
+                            step="any" class="form-control">
+                        </td>
+                    </tr>
+
                 </tbody>
             </table>
         </div>
