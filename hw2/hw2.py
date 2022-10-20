@@ -17,19 +17,17 @@
 
 import csv
 import json
-import xml
+import xml.etree.ElementTree as ET
 
 filename = "C:/Users/carya/Desktop/CMPE-131-Elevate/hw2/hw2_data.txt"
 csvPath = "C:/Users/carya/Desktop/CMPE-131-Elevate/hw2/csv_out.csv"
 jsonPath = "C:/Users/carya/Desktop/CMPE-131-Elevate/hw2/json_out.json"
 xmlPath = "C:/Users/carya/Desktop/CMPE-131-Elevate/hw2/"
 
-# read filename as argument
-# read for csv
+# write to csv
 with open(filename, 'r') as f:
     readcsv = f.read().replace('\t', ',') 
 
-# write to csv 
 with open(csvPath, "w", newline="") as g:
     writer = csv.writer(g)
     writer.writerow([readcsv])   # square brackets to write one string per row
