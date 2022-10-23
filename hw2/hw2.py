@@ -17,12 +17,12 @@
 
 import csv
 import json
-import xml.etree.ElementTree as ET
+from dict2xml import dict2xml
 
-filename = "C:/Users/User/Desktop/CMPE131/CMPE-131-Elevate/hw2/hw2_data.txt"
-csvPath = "C:/Users/User/Desktop/CMPE131/CMPE-131-Elevate/hw2/csv_out.csv"
-jsonPath = "C:/Users/User/Desktop/CMPE131/CMPE-131-Elevate/hw2/json_out.json"
-xmlPath = "C:/Users/User/Desktop/CMPE131/CMPE-131-Elevate/hw2/xml_out.xml"
+filename = "C:/Users/carya/Desktop/CMPE-131-Elevate/hw2/hw2_data.txt"
+csvPath = "C:/Users/carya/Desktop/CMPE-131-Elevate/hw2/csv_out.csv"
+jsonPath = "C:/Users/carya/Desktop/CMPE-131-Elevate/hw2/json_out.json"
+xmlPath = "C:/Users/carya/Desktop/CMPE-131-Elevate/hw2/xml_out.xml"
 
 filetype = input("Enter the file format (csv, json, xml): ")
 
@@ -34,6 +34,8 @@ if (filetype == "csv"):
     with open(csvPath, 'w', newline='') as g:
         writer = csv.writer(g)
         writer.writerow([readcsv])   # square brackets to write one string per row
+    print("File converted to CSV.")
+
 elif (filetype == "json"):
     # write to json
     players = {}
@@ -64,19 +66,38 @@ elif (filetype == "json"):
     out_file = open(jsonPath, "w")
     json.dump(players, out_file, indent = 4)
     out_file.close()
+    print("File converted to JSON.")
 
 else:
-    # write to xml 
-    root = ET.Element("root")
-    doc = ET.SubElement(root, "input")
+    headers = ['Year', 'Player', 'Age', 'Hometown', 'Home State', 'Tm', 'G', 
+    'GS', 'Cmp', 'Att', 'Yds', 'TD', 'Int', 'Att', 'Yds', 'Y/A', 'TD', 'Rec', 
+    'Yds', 'Y/R', 'TD', 'FantPos', 'FantPt', 'Height (inches)', 'Weight', 'College', 
+    'Conference', 'College wins', 'College losses', 'DOB', 'Draft Round', 'Draft Year', 
+    'Wonderlic', '40\xa0Yard', 'Bench Press', 'Vert Leap\xa0(in)', 'Broad Jump\xa0(in)', 
+    'Shuttle', '3Cone']
 
-    with open(csvPath) as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter='\t', quoting=csv.QUOTE_NONE)
-        for row in csv_reader:
-            blanks_removed_row = ' '.join(row).split()
-            input = ET.SubElement(doc, "item")
-            for i, item in enumerate(blanks_removed_row, start= 1):
-                ET.SubElement(input, "data{0}".format(i)).text = item
+    players = {}
 
-    tree = ET.ElementTree(root)
-    tree.write(xmlPath, encoding='utf-8', xml_declaration=True)
+    with open(filename) as fh:
+        p = 0
+        for line in fh:
+            description = list(line.strip().split('\t'))
+            #print(description)
+
+            sno = 'player'+str(p)
+            if (p > 0):
+                playerData = {}
+                i = 0
+                while i<len(headers):
+                    playerData[headers[i]] = description[i]
+                    i = i+1
+                
+                players[sno] = playerData
+            p = p + 1
+        #print(players)
+    xml = dict2xml(players)
+
+    with open(xmlPath, "w") as f:
+        f.write(xml)
+
+    print("File converted to XML.")
