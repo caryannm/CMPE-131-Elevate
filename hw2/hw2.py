@@ -82,22 +82,17 @@ else:
         p = 0
         for line in fh:
             description = list(line.strip().split('\t'))
-            #print(description)
-
-            sno = 'player'+str(p)
             if (p > 0):
+                sno = 'player'+str(p)
                 playerData = {}
                 i = 0
                 while i<len(headers):
                     playerData[headers[i]] = description[i]
-                    i = i+1
-                
-                players[sno] = playerData
+                    i = i + 1
+                players[p] = playerData
             p = p + 1
-        #print(players)
     xml = dict2xml(players)
-
     with open(xmlPath, "w") as f:
         f.write(xml)
-
     print("File converted to XML.")
+    
