@@ -9,23 +9,19 @@
 </head>
 <body class = "light-theme">
     <h1>Course Grade Calculator</h1>
-    <p id="msg">Calculate your course grade:</p>
+    <p>Calculate your course grade:</p>
     <form id="calculator_form" autocomplete="off">
         <div class="form-group">
             <table id="tbl">
                 <tbody>
                     <tr>
-                        <td>
-                            Assignment
-                        </td>
+                        <td>Assignment</td>
                         <td style="display: table-cell">Grade (%) </td>
-                        <td>
-                            Weight
-                        </td>
+                        <td>Weight</td>
                     </tr>
                     <tr>
                         <td>
-                            <input type = "text" placeholder="e.g HW, Quiz"
+                            <input type = "text" placeholder="e.g. HW, Quiz"
                             class="form-control" autofocus>
                         </td>
                         <td style = "display: table-cell;">
@@ -37,9 +33,26 @@
                             step="any" class="form-control">
                         </td>
                     </tr>
-
+                    <tr>
+                        <td>
+                            <input type = "text" 
+                            class="form-control" autofocus>
+                        </td>
+                        <td style = "display: table-cell;">
+                            <input type = "number" name="grade[]" min = "0"
+                            step="any" class="form-control">
+                        </td>
+                        <td>
+                            <input type = "number" name="weight[]" min = "0"
+                            step="any" class="form-control">
+                        </td>
+                        <td> 
+                            <input type = "button" value="Delete Row" onclick="DeleteRowFunction"/>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
+            <input type="submit" class="button add_another" value="Add another row"/>
         </div>
     </form>
     <script src="app.js"></script>
