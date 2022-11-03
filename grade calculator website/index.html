@@ -18,7 +18,7 @@
                         <td>
                             Assignment
                         </td>
-                        <td style="display: table-cell">Grade (%) </td>
+                        <td style="display: table-cell">Grade (letter)</td>
                         <td>
                             Weight
                         </td>
@@ -29,19 +29,36 @@
                             class="form-control" autofocus>
                         </td>
                         <td style = "display: table-cell;">
-                            <input type = "number" name="grade[]" min = "0"
-                            step="any" class="form-control">
+                            <label type = "text" name="grade[]" class="form-control"></label>
+                            <select id="grade[]" name="grade[]">
+                                <option value="A+">A+</option>
+                                <option value="A">A</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B">B</option>
+                                <option value="B-">B-</option>                               
+                                <option value="C+">C+</option>
+                                <option value="C">C</option>
+                                <option value="C-">C-</option>  
+                                <option value="D+">D+</option>
+                                <option value="D">D</option>
+                                <option value="D-">D-</option>  
+                                <option value="F">F</option>
+                            </select>
                         </td>
                         <td>
-                            <input type = "number" name="weight[]" min = "0"
-                            step="any" class="form-control">
+                            <input type = "number" name="weight[]" min = "0" max = "100"
+                            step="1" class="form-control">
                         </td>
                     </tr>
-
                 </tbody>
             </table>
         </div>
     </form>
+    <div>
+        <button id="calculate-btn"> Calculate Grade </button>
+        <div id="GPA Display">0</div>
+    </div>
     <script src="app.js"></script>
     <noscript>You need to enable JavaScript to view the full site.</noscript>
 </body>
