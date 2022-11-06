@@ -10,6 +10,14 @@ body {
     font-family: helvetica;
   }
 
+h1{
+  color: rgb(242, 210, 27); 
+  background-color: rgb(32, 119, 233);
+}
+p{
+  color: rgb(121, 117, 117);
+}
+
 ul {
     font-family: helvetica;
 }
@@ -20,10 +28,6 @@ li {
   
   .list {
     list-style: square;
-  }
-  
-  #msg {
-    font-family: monospace;
   }
 
   .light-theme {
