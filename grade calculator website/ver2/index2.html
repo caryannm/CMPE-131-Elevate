@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Grade Calculator</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <h1>Course Grade Calculator</h1>
+    <p>Calculate your course grade:</p>
+    <form id="calculator_form" autocomplete="off">
+        <div class="form-group">
+            <table id="tbl">
+                <tbody>
+                    <tr>
+                        <td>Assignment</td>
+                        <td>Grade (%) </td>
+                        <td>Weight</td>
+                    </tr>
+                    <tr>
+                        <td><input placeholder="e.g. HW, Quiz" value="Homework Assignments"></td>
+                        <td><input id="grade1" value="100"></td>
+                        <td><input id="weight1" value="25"></td>
+                    </tr>
+                    <tr>
+                        <td><input value="In-Class Assignments"></td>
+                        <td><input id="grade2" value="100"></td>
+                        <td><input id="weight2" value="5"></td>
+                    </tr>
+                    <tr>
+                        <td><input value="Term Project"></td>
+                        <td><input id="grade3" value="90"></td>
+                        <td><input id="weight3" value="40"></td>
+                    </tr>
+                    <tr>
+                        <td><input value="Midterm Exam"></td>
+                        <td><input id="grade4" value="97"></td>
+                        <td><input id="weight4" value="10"></td>
+                    </tr>
+                    <tr>
+                        <td><input value="Final Exam"></td>
+                        <td><input id="grade5" value="90"></td>
+                        <td><input id="weight5" value="20"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="form-group">
+            <input type=button id="calc_button" value="Calculate Course Grade" onclick="Calc()">
+        </div>
+        <p>Course grade = </p>
+        <span id="result"></span>
+        <span id="letterGrade"></span>
+    </form>
+    <script src="app2.js"></script>
+    <noscript>You need to enable JavaScript to view the full site.</noscript>
+</body>
+</html>
