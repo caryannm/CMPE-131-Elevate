@@ -34,26 +34,24 @@ function Calc() {
     var sum = (grd1 * wght1) + (grd2 * wght2) + (grd3 * wght3) + (grd4 * wght4) + (grd5 * wght5);
     var result = sum / weightSum;
 
-    var output1 = document.getElementById("result");
-    output1.innerHTML = result.toFixed(2) + "%";
-
     var letterGrade;
 
-    switch (result) {
-        case (result == 100): letterGrade = "A+";
-        case (94 <= result && result <= 99): letterGrade = "A"; break; 
-        case (90 <= result && result <= 93): letterGrade = "A-"; break; 
-        case (87 <= result && result <= 89): letterGrade = "B+"; break; 
-        case (83 <= result && result <= 86): letterGrade = "B"; break; 
-        case (80 <= result && result <= 82): letterGrade = "B-"; break; 
-        case (77 <= result && result <= 79): letterGrade = "C+"; break; 
-        case (73 <= result && result <= 76): letterGrade = "C"; break; 
-        case (70 <= result && result <= 72): letterGrade = "C-"; break; 
-        case (67 <= result && result <= 69): letterGrade = "D+"; break; 
-        case (63 <= result && result <= 66): letterGrade = "D"; break; 
-        case (60 <= result && result <= 62): letterGrade = "D-"; break; 
-        case (0 <= result  && result <= 59): letterGrade = "F"; break; 
-    }
+    if (result == 100) letterGrade = "A+";
+    else if (94 <= result && result < 100) letterGrade = "A"; 
+    else if (90 <= result && result < 94) letterGrade = "A-"; 
+    else if (87 <= result && result < 90) letterGrade = "B+"; 
+    else if (83 <= result && result < 87) letterGrade = "B"; 
+    else if (80 <= result && result < 83) letterGrade = "B-"; 
+    else if (77 <= result && result < 80) letterGrade = "C+"; 
+    else if (73 <= result && result < 77) letterGrade = "C"; 
+    else if (70 <= result && result < 73) letterGrade = "C-"; 
+    else if (67 <= result && result < 70) letterGrade = "D+"; 
+    else if (63 <= result && result < 67) letterGrade = "D"; 
+    else if (60 <= result && result < 63) letterGrade = "D-"; 
+    else letterGrade = "F"; 
+
+    var output1 = document.getElementById("result");
+    output1.innerHTML = result.toFixed(2) + "%";
 
     var output2 = document.getElementById("letterGrade");
     output2.innerHTML = letterGrade;
