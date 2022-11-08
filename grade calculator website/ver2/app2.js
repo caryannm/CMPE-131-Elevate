@@ -3,19 +3,8 @@
 const calculateButton = document.querySelectorAll
  
 switcher.addEventListener('click', function() {
-    document.body.classList.toggle('light-theme');
-
-    const className = document.body.className;
-    if(className == "light-theme") {
-        this.textContent = "Dark";
-    } else {
-        
-    }
-
-    console.log('current class name: ' + className);
+    Calc();
 });
-
-Calc();
 
 function Calc() {
     var tableRow = document.getElementById('tbl').rows;
