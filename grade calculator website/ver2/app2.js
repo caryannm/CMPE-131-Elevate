@@ -26,8 +26,18 @@ function Calc() {
     */
 
     var table = document.getElementById('tbl');
-    
+    var numerator = 0;
+    var weightSum = 0;
 
+    const gradeArray = document.getElementsByClassName('grade[]');
+    const weightArray = document.getElementsByClassName('weight[]');
+
+    for (let i = 0; i < gradeArray.length; i++) {
+        numerator += gradeArray[i].value * weightArray[i].value;
+        weightSum += +weightArray[i].value;
+    }
+
+    var result = numerator / weightSum;
 
     var letterGrade;
 
