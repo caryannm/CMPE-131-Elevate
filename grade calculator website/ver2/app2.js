@@ -1,33 +1,35 @@
 'use strict';
 
-const calculateButton = document.querySelectorAll
- 
-switcher.addEventListener('click', function() {
-    Calc();
-});
+function insert_row() {
+    var newRow = document.getElementById('tbl').insertRow();
+    newRow.innerHTML = "<tr><td><input></td> <td><input class='grade[]'></td> <td><input class='weight[]'></td> <td><input type='button' onclick='delete_row(this)' value='Delete row'></td> </tr>";
+}
+
+function delete_row(currentRow) {
+    try {
+        var table = document.getElementById('tbl');
+        var rowCount = table.rows.length;
+        for (var i = 0; i < rowCount; i++) {
+            var row = table.rows[i];
+
+            if (row == currentRow.parentNode.parentNode) {
+            if (rowCount <= 2) {
+                alert("Error: cannot delete all rows.");
+                break;
+            }
+            table.deleteRow(i);
+            rowCount--;
+            i--;
+            }
+        }
+    }
+    catch(e) {alert(e);}
+}
 
 function Calc() {
-    /*
-    var tableRow = document.getElementById('tbl').rows;
-    var grd1 = document.getElementById('grade1').value;
-    var grd2 = document.getElementById('grade2').value;
-    var grd3 = document.getElementById('grade3').value;
-    var grd4 = document.getElementById('grade4').value;
-    var grd5 = document.getElementById('grade5').value;
-    var wght1 = document.getElementById('weight1').value;
-    var wght2 = document.getElementById('weight2').value;
-    var wght3 = document.getElementById('weight3').value;
-    var wght4 = document.getElementById('weight4').value;
-    var wght5 = document.getElementById('weight5').value;
-
-    var weightSum = +wght1 + +wght2 + +wght3 + +wght4 + +wght5;
-    var sum = (grd1 * wght1) + (grd2 * wght2) + (grd3 * wght3) + (grd4 * wght4) + (grd5 * wght5);
-    var result = sum / weightSum;
-    */
-
-    var table = document.getElementById('tbl');
     var numerator = 0;
     var weightSum = 0;
+    var letterGrade;
 
     const gradeArray = document.getElementsByClassName('grade[]');
     const weightArray = document.getElementsByClassName('weight[]');
@@ -36,12 +38,9 @@ function Calc() {
         numerator += gradeArray[i].value * weightArray[i].value;
         weightSum += +weightArray[i].value;
     }
-
     var result = numerator / weightSum;
 
-    var letterGrade;
-
-    if (result == 100) letterGrade = "A+";
+    if (result >= 100) letterGrade = "A+";
     else if (94 <= result && result < 100) letterGrade = "A"; 
     else if (90 <= result && result < 94) letterGrade = "A-"; 
     else if (87 <= result && result < 90) letterGrade = "B+"; 

@@ -21,32 +21,21 @@
                         <td>Weight</td>
                     </tr>
                     <tr>
-                        <td><input placeholder="e.g. HW, Quiz" value="Homework Assignments"></td>
-                        <td><input value="100" class="grade[]"></td>
-                        <td><input value="25" class="weight[]"></td>
+                        <td><input placeholder='e.g. HW, Quiz'></td>
+                        <td><input class='grade[]'></td>
+                        <td><input class='weight[]'></td>
+                        <td><input type='button' onclick='delete_row(this)' value='Delete row'/></td>
                     </tr>
                     <tr>
-                        <td><input value="In-Class Assignments"></td>
-                        <td><input value="100" class="grade[]"></td>
-                        <td><input value="5" class="weight[]"></td>
-                    </tr>
-                    <tr>
-                        <td><input value="Term Project"></td>
-                        <td><input value="90" class="grade[]"></td>
-                        <td><input value="40" class="weight[]"></td>
-                    </tr>
-                    <tr>
-                        <td><input value="Midterm Exam"></td>
-                        <td><input value="97" class="grade[]"></td>
-                        <td><input value="10" class="weight[]"></td>
-                    </tr>
-                    <tr>
-                        <td><input value="Final Exam"></td>
-                        <td><input value="90" class="grade[]"></td>
-                        <td><input value="20" class="weight[]"></td>
+                        <td><input></td>
+                        <td><input class='grade[]'></td>
+                        <td><input class='weight[]'></td>
+                        <td><input type='button' onclick='delete_row(this)' value='Delete row'/></td>
                     </tr>
                 </tbody>
             </table>
+            <input class="center" type="button" onclick="insert_row()" value="+   Add new row">
+
         </div>
         <p> </p>
         <div class="form-group">

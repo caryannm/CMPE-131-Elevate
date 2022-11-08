@@ -1,9 +1,3 @@
-:root {
-    --green: #00FF00;
-    --white: #FFFFFF;
-    --black: #000000;
-  }
-
 body {
     background: var(--bg);
     color: var(--fontColor);
@@ -15,6 +9,7 @@ h1{
   background-color: rgb(32, 119, 233);
   text-align: center;
 }
+
 p{
   color: rgb(121, 117, 117);
   text-align: center;
