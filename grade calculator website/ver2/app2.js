@@ -1,20 +1,20 @@
 'use strict';
 
+var table = document.getElementById('tbl');
+
 function insert_row() {
-    var newRow = document.getElementById('tbl').insertRow();
+    var newRow = table.insertRow();
     newRow.innerHTML = "<tr><td><input></td> <td><input class='grade[]'></td> <td><input class='weight[]'></td> <td><input type='button' onclick='delete_row(this)' value='Delete row'></td> </tr>";
 }
 
 function delete_row(currentRow) {
     try {
-        var table = document.getElementById('tbl');
         var rowCount = table.rows.length;
         for (var i = 0; i < rowCount; i++) {
             var row = table.rows[i];
-
             if (row == currentRow.parentNode.parentNode) {
             if (rowCount <= 2) {
-                alert("Error: cannot delete all rows.");
+                alert("Error: Cannot delete all rows.");
                 break;
             }
             table.deleteRow(i);
@@ -26,6 +26,10 @@ function delete_row(currentRow) {
     catch(e) {alert(e);}
 }
 
+function reset() {
+    table.innerHTML="";
+}
+
 function Calc() {
     var numerator = 0;
     var weightSum = 0;
@@ -35,8 +39,12 @@ function Calc() {
     const weightArray = document.getElementsByClassName('weight[]');
 
     for (let i = 0; i < gradeArray.length; i++) {
-        numerator += gradeArray[i].value * weightArray[i].value;
-        weightSum += +weightArray[i].value;
+        if (isNaN(gradeArray[i].value) || isNaN(weightArray[i].value))
+            alert("Error: Please enter a number for the grade and weight.");
+        else {
+            numerator += gradeArray[i].value * weightArray[i].value;
+            weightSum += +weightArray[i].value;
+        }
     }
     var result = numerator / weightSum;
 
