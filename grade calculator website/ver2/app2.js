@@ -3,21 +3,11 @@
 const calculateButton = document.querySelectorAll
  
 switcher.addEventListener('click', function() {
-    document.body.classList.toggle('light-theme');
-
-    const className = document.body.className;
-    if(className == "light-theme") {
-        this.textContent = "Dark";
-    } else {
-        
-    }
-
-    console.log('current class name: ' + className);
+    Calc();
 });
 
-Calc();
-
 function Calc() {
+    /*
     var tableRow = document.getElementById('tbl').rows;
     var grd1 = document.getElementById('grade1').value;
     var grd2 = document.getElementById('grade2').value;
@@ -33,6 +23,21 @@ function Calc() {
     var weightSum = +wght1 + +wght2 + +wght3 + +wght4 + +wght5;
     var sum = (grd1 * wght1) + (grd2 * wght2) + (grd3 * wght3) + (grd4 * wght4) + (grd5 * wght5);
     var result = sum / weightSum;
+    */
+
+    var table = document.getElementById('tbl');
+    var numerator = 0;
+    var weightSum = 0;
+
+    const gradeArray = document.getElementsByClassName('grade[]');
+    const weightArray = document.getElementsByClassName('weight[]');
+
+    for (let i = 0; i < gradeArray.length; i++) {
+        numerator += gradeArray[i].value * weightArray[i].value;
+        weightSum += +weightArray[i].value;
+    }
+
+    var result = numerator / weightSum;
 
     var letterGrade;
 
