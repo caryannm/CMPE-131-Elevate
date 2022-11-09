@@ -31,29 +31,13 @@ function delete_row(currentRow) {
     catch(e) {alert(e);}
 }
 
-/*
-function resetTable(current) {
-    var tableID = current.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.id;
-    var currentTable = document.getElementById(tableID);
-    currentTable.innerHTML;
-}*/
-
 function Calc(current) {
     var tableID = current.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.id;
     var currentTable = document.getElementById(tableID);
 
-    var outputDiv = current.parentNode.parentNode.nextElementSibling;
-
     var numerator = 0;
     var weightSum = 0;
     var dataCount = 0;
-
-    let children = outputDiv.childNodes;
-    let gchildren1 = children[0].childNodes;
-    let gchildren2 = children[1].childNodes;
-
-    var resultOut = gchildren1[0];
-    var letterGradeOut = gchildren2[0];
     
     var result = 0;
     var letterGrade;
@@ -92,21 +76,33 @@ function Calc(current) {
         alert("Error: Please enter your grade and weight.");
     }
 
-    resultOut.innerHTML = result.toFixed(2) + "%";
+
+    var resultOut = current.nextElementSibling.nextElementSibling.nextElementSibling;
+    resultOut.innerHTML = result.toFixed(2) + "% &emsp;";
+    var letterGradeOut = current.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling;
     letterGradeOut.innerHTML = letterGrade;
 }
 
 function addCourse() {
+    var clone = document.getElementById("course"+courseCount).cloneNode(true);
     courseCount++;
-    var cloneTemp = document.getElementById("course").cloneNode(true);
-    cloneTemp.id += ("Clone"+courseCount);
-    cloneTemp.getElementsByTagName('table')[0].id = "tbl" + courseCount;
-    document.getElementById("placeholder").appendChild(cloneTemp);
+    clone.id = ("course"+courseCount);
+    clone.getElementsByTagName('table')[0].id = "tbl" + courseCount;
+    document.getElementById("placeholder").appendChild(clone);
 }
 
-function deleteCourse(currentCourse) {
-    if (currentCourse.parentNode) {
-        currentCourse.parentNode.removeChild();
+function deleteCourse(current) {
+    try {
+        var currentCourse = current.parentNode.parentNode.parentNode;
+        var courseCloneID;
+        for (var i = 0; i < courseCount+1; i++) {
+            courseCloneID = "course" + i;
+            if (courseCloneID == currentCourse.id) {
+                currentCourse.parentNode.removeChild(currentCourse);          
+            }
+
+        }        
     }
+    catch(e) {alert(e);}
 }
 
