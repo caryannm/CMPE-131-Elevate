@@ -56,13 +56,5 @@ legend {
   display:block;
   margin-left: auto;
   margin-right: auto;
-  width:87%;
-}
-
-.grades {
-  width: 75px;
-}
-
-.weights {
-  width: 75px;
+  width:99%;
 }

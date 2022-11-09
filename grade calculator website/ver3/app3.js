@@ -46,8 +46,9 @@ function Calc(current) {
     const weightArray = currentTable.getElementsByClassName('weights');
     
     for (let i = 0; i < gradeArray.length; i++) {
-        if (isNaN(gradeArray[i].value) || isNaN(weightArray[i].value)) {
-            alert("Error: Please enter a number for the grade and weight.");
+        if ((isNaN(gradeArray[i].value) || isNaN(weightArray[i].value)) || (gradeArray[i].value < 0 || weightArray[i].value < 0)) {
+            alert("Error: Please enter a positive number for the grade and weight.");
+            datacount++;
             break;
         }
         else if (gradeArray[i].value != "" && weightArray[i].value != "") {
@@ -73,9 +74,8 @@ function Calc(current) {
     else letterGrade = "F"; 
 
     if (dataCount == 0) {
-        alert("Error: Please enter your grade and weight.");
+        alert("Error: Please enter a positive number for the grade and weight.");
     }
-
 
     var resultOut = current.nextElementSibling.nextElementSibling.nextElementSibling;
     resultOut.innerHTML = result.toFixed(2) + "% &emsp;";
@@ -89,6 +89,7 @@ function addCourse() {
     clone.id = ("course"+courseCount);
     clone.getElementsByTagName('table')[0].id = "tbl" + courseCount;
     document.getElementById("placeholder").appendChild(clone);
+    
 }
 
 function deleteCourse(current) {
@@ -98,10 +99,16 @@ function deleteCourse(current) {
         for (var i = 0; i < courseCount+1; i++) {
             courseCloneID = "course" + i;
             if (courseCloneID == currentCourse.id) {
-                currentCourse.parentNode.removeChild(currentCourse);          
+                if (courseCount == 0) {
+                    alert("Error: Cannot delete all courses.");
+                    break;
+                }
+                currentCourse.parentNode.removeChild(currentCourse);   
+                courseCount--;
+                i--;
             }
 
-        }        
+        }
     }
     catch(e) {alert(e);}
 }
