@@ -13,7 +13,8 @@
     <p>Calculate your course grades:</p>
 
     <div id="placeholder">
-        <div id="course">
+        <div id="course0">
+            <br>
             <fieldset>
                 <legend>Course <input placeholder='eg: CMPE 131, CMPE 132'></legend>
                 <form>
@@ -43,12 +44,12 @@
                     <div id="button_div" style="text-align: center;">
                         <input type="button" id="calc_btn" value="Calculate Course Grade" onclick="Calc(this)" class="button-group">
                         <input type="reset" id="reset_btn" value="Reset Values">
+                        <p> </p>
+                        <span id="result"></span>
+                        <span id="letterGrade"></span>
+                        <p> </p>
                     </div>
                 </form>
-                <div style="text-align: center;">
-                    <p>Course Grade = <span id="result"></span></p>
-                    <p>Letter Grade = <span id="letterGrade"></span></p>
-                </div>
                 <div style="text-align: center;"><input type="button" id="delete_course_btn" value="Delete course" onclick="deleteCourse(this)"></div>
             </fieldset>
         </div>
