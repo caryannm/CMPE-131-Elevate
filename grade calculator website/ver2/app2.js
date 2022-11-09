@@ -13,13 +13,13 @@ function delete_row(currentRow) {
         for (var i = 0; i < rowCount; i++) {
             var row = table.rows[i];
             if (row == currentRow.parentNode.parentNode) {
-            if (rowCount <= 2) {
-                alert("Error: Cannot delete all rows.");
-                break;
-            }
-            table.deleteRow(i);
-            rowCount--;
-            i--;
+                if (rowCount <= 2) {
+                    alert("Error: Cannot delete all rows.");
+                    break;
+                }
+                table.deleteRow(i);
+                rowCount--;
+                i--;
             }
         }
     }
