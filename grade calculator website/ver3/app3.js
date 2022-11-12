@@ -104,8 +104,8 @@ function deleteCourse(current) {
                     break;
                 }
                 currentCourse.parentNode.removeChild(currentCourse);   
-                courseCount--;
-                i--;
+                //courseCount--;
+                //i--;
             }
 
         }
