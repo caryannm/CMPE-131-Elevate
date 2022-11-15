@@ -2,6 +2,8 @@
 
 var table = document.getElementById('tbl');
 var courseCount = 0;
+const cloneID = document.getElementById("course"+courseCount);
+const cloneIDElement = cloneID.cloneNode(true);
 
 function insert_row(current) {
     var tableID = current.previousElementSibling.id;
@@ -46,8 +48,9 @@ function Calc(current) {
     const weightArray = currentTable.getElementsByClassName('weights');
     
     for (let i = 0; i < gradeArray.length; i++) {
-        if (isNaN(gradeArray[i].value) || isNaN(weightArray[i].value)) {
-            alert("Error: Please enter a number for the grade and weight.");
+        if ((isNaN(gradeArray[i].value) || isNaN(weightArray[i].value)) || (gradeArray[i].value < 0 || weightArray[i].value < 0)) {
+            alert("Error: Please enter a positive number for the grade and weight.");
+            datacount++;
             break;
         }
         else if (gradeArray[i].value != "" && weightArray[i].value != "") {
@@ -56,38 +59,43 @@ function Calc(current) {
             dataCount++;
         }
     }
-    result = numerator / weightSum;
 
-    if (result >= 100) letterGrade = "A+";
-    else if (94 <= result && result < 100) letterGrade = "A"; 
-    else if (90 <= result && result < 94) letterGrade = "A-"; 
-    else if (87 <= result && result < 90) letterGrade = "B+"; 
-    else if (83 <= result && result < 87) letterGrade = "B"; 
-    else if (80 <= result && result < 83) letterGrade = "B-"; 
-    else if (77 <= result && result < 80) letterGrade = "C+"; 
-    else if (73 <= result && result < 77) letterGrade = "C"; 
-    else if (70 <= result && result < 73) letterGrade = "C-"; 
-    else if (67 <= result && result < 70) letterGrade = "D+"; 
-    else if (63 <= result && result < 67) letterGrade = "D"; 
-    else if (60 <= result && result < 63) letterGrade = "D-"; 
-    else letterGrade = "F"; 
+    if (weightSum > 100) {
+        alert("Error: Total weight should not exceed 100.");
+    }
+    else {
+        result = numerator / weightSum;
 
-    if (dataCount == 0) {
-        alert("Error: Please enter your grade and weight.");
+        if (result >= 100) letterGrade = "A+";
+        else if (94 <= result && result < 100) letterGrade = "A"; 
+        else if (90 <= result && result < 94) letterGrade = "A-"; 
+        else if (87 <= result && result < 90) letterGrade = "B+"; 
+        else if (83 <= result && result < 87) letterGrade = "B"; 
+        else if (80 <= result && result < 83) letterGrade = "B-"; 
+        else if (77 <= result && result < 80) letterGrade = "C+"; 
+        else if (73 <= result && result < 77) letterGrade = "C"; 
+        else if (70 <= result && result < 73) letterGrade = "C-"; 
+        else if (67 <= result && result < 70) letterGrade = "D+"; 
+        else if (63 <= result && result < 67) letterGrade = "D"; 
+        else if (60 <= result && result < 63) letterGrade = "D-"; 
+        else letterGrade = "F";
+
+        var resultOut = current.nextElementSibling.nextElementSibling.nextElementSibling;
+        resultOut.innerHTML = result.toFixed(2) + "% &emsp;";
+        var letterGradeOut = current.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling;
+        letterGradeOut.innerHTML = letterGrade;
     }
 
-
-    var resultOut = current.nextElementSibling.nextElementSibling.nextElementSibling;
-    resultOut.innerHTML = result.toFixed(2) + "% &emsp;";
-    var letterGradeOut = current.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling;
-    letterGradeOut.innerHTML = letterGrade;
+    if (dataCount == 0) {
+        alert("Error: Please enter the grade and weight.");
+    }
 }
 
 function addCourse() {
-    var clone = document.getElementById("course"+courseCount).cloneNode(true);
+    var clone = cloneIDElement.cloneNode(true);
     courseCount++;
     clone.id = ("course"+courseCount);
-    clone.getElementsByTagName('table')[0].id = "tbl" + courseCount;
+    clone.getElementsByTagName('table')[0].id = "tbl" + courseCount; 
     document.getElementById("placeholder").appendChild(clone);
 }
 
@@ -98,11 +106,15 @@ function deleteCourse(current) {
         for (var i = 0; i < courseCount+1; i++) {
             courseCloneID = "course" + i;
             if (courseCloneID == currentCourse.id) {
-                currentCourse.parentNode.removeChild(currentCourse);          
+                if (courseCount == 0) {
+                    alert("Error: Cannot delete all courses.");
+                    break;
+                }
+                currentCourse.parentNode.removeChild(currentCourse);   
+                //courseCount--;
+                //i--;
             }
-
-        }        
+        }
     }
     catch(e) {alert(e);}
 }
-

@@ -38,7 +38,7 @@ fieldset {
   margin: 8px;
   border: 1px solid silver;
   padding: 8px;
-  width: 300px;
+  width: 500px;
   border-radius: 4px;
   margin-left: auto;
   margin-right: auto;
@@ -56,13 +56,5 @@ legend {
   display:block;
   margin-left: auto;
   margin-right: auto;
-  width:100%;
-}
-
-.grades {
-  width: 75px;
-}
-
-.weights {
-  width: 75px;
+  width:99%;
 }
