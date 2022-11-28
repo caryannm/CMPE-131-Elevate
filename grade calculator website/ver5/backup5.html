@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Grade Calculator</title>
+    <!-- <link rel="stylesheet" href="main.css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center flex-col">
+    <header>
+        <h1 style=" color: rgb(242, 210, 27); 
+        background-color: rgb(32, 119, 233);" class="text-2xl">Course Grade Calculator</h1>
+        <img width="250" src="SJSU.png" alt="SJSU"/> 
+        <hr/><hr/>
+         <p style="color: rgb(121, 117, 117);">Calculate your course grade:</p>
+    </header>
+    <main class="w-full">
+        <br/>
+        <div id="course">
+        <div class="flex items-center flex-row justify-between mx-auto" style="max-width: 560px">
+            <div class="p-2">Assignment</div>
+            <div class="p-2">Grade (Points)</div>
+            <div class="p-2">Weight</div>
+        </div>
+        <form id="calculatorForm" autocomplete="off" class="w-full">
+            <div class="calculatorRow flex items-center flex-row justify-between mx-auto" style="max-width: 600px">
+                <div class="px-3">
+                    <div class="p-2"><input type="text" placeholder="e.g. HW, Quiz" class="border-slate-200 border-2 form-control" autofocus /></div>
+                </div>
+                <div class="px-3">
+                    <div class="p-2">
+                        <input type="number" min="0" step="any" class="grade w-full border-slate-200 border-2"/>
+                    </div>
+                </div>
+                <div class="px-3">
+                    
+                    <div class="p-2">
+                        <input type="number" class="weight w-full border-slate-200 border-2" min="0" max="100" step="1"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br/>
+        <div class="flex items-center flex-row justify-between mx-auto" style="max-width: 200px">
+            <button id="addRow" class="border-slate-300 rounded border-2 fill-slate-300 ring ring-slate-300 shadow-2xl shadow-slate-700 opacity-60">Add Another Row</button>
+            <button id="resetBtn" class="border-slate-300 rounded border-2 ring ring-slate-300 shadow-2xl shadow-slate-700 opacity-60"> Reset </button>
+        </div>
+        <br/>
+        <div class="flex items-center flex-col justify-between mx-auto" style="max-width: 600px">
+            <button id="calculateBtn" class="border-slate-300 rounded border-2 ring ring-slate-300 shadow-2xl shadow-slate-700 opacity-60"> Calculate Grade </button>
+            <br/>
+            <div id="GPADisplay" class="w-32 border-slate-500 border-2">0</div>
+        </div>
+    </div>
+    <br/><br/>
+    <div class="flex items-center flex-row justify-between mx-auto" style="max-width: 400px">
+        <button id="addCourseRow" class="border-slate-300 rounded border-2 fill-slate-300 ring ring-slate-300 shadow-2xl shadow-slate-700 opacity-60">Add Another Course Row</button>
+        <button id="deleteCourse" class="border-slate-300 rounded border-2 ring ring-slate-300 shadow-2xl shadow-slate-700 opacity-60"> Delete Course </button>
+    </div>
+    </main>
+    <script src="app5.js"></script>
+    <noscript>You need to enable JavaScript to view the full site.</noscript>
+</body>
+</html>
