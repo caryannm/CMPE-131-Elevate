@@ -2,10 +2,16 @@
 
 var table = document.getElementById('tbl');
 var courseCount = 0;
+var deleteCourseTracker = 0;
 var result = 0;
 var letterGrade;
 const cloneID = document.getElementById("course"+courseCount);
 const cloneIDElement = cloneID.cloneNode(true);
+
+function resetValue(current){
+    current.nextElementSibling.nextElementSibling.innerHTML = ' ';
+    current.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML = ' ';
+}
 
 function insert_row(current) {
     var tableID = current.previousElementSibling.id;
@@ -56,12 +62,20 @@ function calc(current) {
         weightArray[i] = weightArrayLike[i].value;
     }
     
-    calcHelper(gradeArray, weightArray);
+    if (calcHelper(gradeArray, weightArray) != -1){
 
     var resultOut = current.nextElementSibling.nextElementSibling.nextElementSibling;
     resultOut.innerHTML = result.toFixed(2) + "% &emsp;";
     var letterGradeOut = current.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling;
     letterGradeOut.innerHTML = letterGrade;
+    
+    }
+    else{
+        var resultOut = current.nextElementSibling.nextElementSibling.nextElementSibling;
+        resultOut.innerHTML = ' ';
+        var letterGradeOut = current.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling;
+        letterGradeOut.innerHTML = ' ';
+    }
 }
 
 function calcHelper(gradeArray, weightArray) {
@@ -121,6 +135,7 @@ function calcHelper(gradeArray, weightArray) {
 function addCourse() {
     var clone = cloneIDElement.cloneNode(true);
     courseCount++;
+    deleteCourseTracker++;
     clone.id = ("course"+courseCount);
     clone.getElementsByTagName('table')[0].id = "tbl" + courseCount; 
     document.getElementById("placeholder").appendChild(clone);
@@ -131,15 +146,15 @@ function deleteCourse(current) {
         var currentCourse = current.parentNode.parentNode.parentNode;
         var courseCloneID;
 
-        if (courseCount == 0) 
+        if (deleteCourseTracker == 0) 
             alert("Error: Cannot delete all courses.");
         
         else{
-            for (var i = 0; i < courseCount+1; i++) {
+            for (var i = 0; i <= courseCount; i++) {
                 courseCloneID = "course" + i;
                 if (courseCloneID == currentCourse.id) {
                     currentCourse.parentNode.removeChild(currentCourse);
-                    courseCount--;   
+                    deleteCourseTracker--;
                 }
             }
         }
